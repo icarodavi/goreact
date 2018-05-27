@@ -6,23 +6,24 @@ import Button from './Button';
 class App extends Component {
   state = {
     counter: 0,
-  }
+  };
   //montagem//atualização
 
-  static getDerivedStateFromProps(nextProps, prevState) {
-    console.log(prevState);
-    return { counter: nextProps.initialCounter };
+  static getDerivedStateFromProps(props, state) {
+    return null;
   }
   //Montagem
   componentDidMount() { }
 
   //Atualização
   shouldComponentUpdate(nextProps, nextState) {
-   return nextState.counter < 10;
+    nextProps.initialCounter = nextState.counter;
+   return nextState.counter <= 10;
   }
 
   handleClick = () => {
-    this.setState({ counter: this.state.counter + 1 });
+    this.setState(state => ({ counter: this.state.counter + 1 }));
+    this.setState(state => ({ counter: this.state.counter + 1 }));
   }
   render() {
     return(
@@ -31,7 +32,8 @@ class App extends Component {
       <Button onClick={this.handleClick}>Somar</Button>
       <h2>{this.state.counter}</h2>
     </Fragment>
-    )};
+    )
+  };
 }
 
 render(<App initialCounter={3} />, document.getElementById('app'));
