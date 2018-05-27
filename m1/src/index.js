@@ -32,6 +32,6 @@ class App extends Component {
       <h2>{this.state.counter}</h2>
     </Fragment>
     )};
-
 }
+
 render(<App initialCounter={3} />, document.getElementById('app'));
