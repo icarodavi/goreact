@@ -1,24 +1,37 @@
 import React, { Component, Fragment } from 'react';
 import { render } from 'react-dom';
+import PropTypes from 'prop-types';
+import Button from './Button';
 
-class Button extends Component {
-  render() {
-    return (<a href="" onClick={this.props.onClick}>
-      {this.props.children}
-    </a>
-  );
-  }
-}
 class App extends Component {
-  handleClick() {
-    alert('Botão clicado');
+  state = {
+    counter: 0,
+  }
+  //montagem//atualização
+
+  static getDerivedStateFromProps(nextProps, prevState) {
+    console.log(prevState);
+    return { counter: nextProps.initialCounter };
+  }
+  //Montagem
+  componentDidMount() { }
+
+  //Atualização
+  shouldComponentUpdate(nextProps, nextState) {
+   return nextState.counter < 10;
+  }
+
+  handleClick = () => {
+    this.setState({ counter: this.state.counter + 1 });
   }
   render() {
     return(
     <Fragment>
       <h1>Hello</h1>
-      <Button onClick={this.handleClick}>Enviar</Button>
+      <Button onClick={this.handleClick}>Somar</Button>
+      <h2>{this.state.counter}</h2>
     </Fragment>
-    )}
+    )};
+
 }
-render(<App />, document.getElementById('app'));
+render(<App initialCounter={3} />, document.getElementById('app'));
