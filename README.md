@@ -1,5 +1,5 @@
 # GoReact
 
 ```js
-const emailAuthor = 'icarodavi@gmail.com'
+const emailAuthor = 'icarodavi@gmail.com';
 ```
