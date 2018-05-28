@@ -12,7 +12,13 @@ module.exports = {
       use: {
         loader: "babel-loader",
       }
-    }],
+    },
+  {
+    test: /\.scss$/,
+    use: [
+      {loader: 'style-loader'},
+      {loader: 'css-loader'}]
+  }],
   },
   devServer: {
     contentBase: path.join(__dirname, 'public')

@@ -2,23 +2,11 @@ import React, { Component, Fragment } from 'react';
 import { render } from 'react-dom';
 import PropTypes from 'prop-types';
 import Button from './Button';
+import './style.scss';
 
 class App extends Component {
   state = {
     counter: 0,
-  };
-  //montagem//atualização
-
-  static getDerivedStateFromProps(props, state) {
-    return null;
-  }
-  //Montagem
-  componentDidMount() { }
-
-  //Atualização
-  shouldComponentUpdate(nextProps, nextState) {
-    nextProps.initialCounter = nextState.counter;
-   return nextState.counter <= 10;
   }
 
   handleClick = () => {
@@ -28,11 +16,11 @@ class App extends Component {
   render() {
     return(
     <Fragment>
-      <h1>Hello</h1>
+      <h1 className="title">Hello</h1>
       <Button onClick={this.handleClick}>Somar</Button>
       <h2>{this.state.counter}</h2>
     </Fragment>
-    )
+    );
   };
 }
 
