@@ -11,7 +11,9 @@ class App extends Component {
       <div>
         <Head />
         <section id="post">
-          <Posts />
+          <Posts>
+            <img src="https://thumbs.dreamstime.com/z/do-retrato-masculino-do-avatar-do-%C3%ADcone-do-perfil-pessoa-ocasional-58249506.jpg" />
+          </Posts>
           <Posts />
           <Posts />
         </section>

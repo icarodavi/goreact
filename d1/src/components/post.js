@@ -1,9 +1,5 @@
 import React from 'react';
 
-const Post = props => (
-  <div className="post">
-    <h1>Post</h1>
-  </div>
-);
+const Post = props => <div className="post">{props.children}</div>;
 
 export default Post;
