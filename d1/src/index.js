@@ -39,11 +39,11 @@ class App extends Component {
           <Posts>
             <div className="postTopo">
               <div>
-                <img src="https://thumbs.dreamstime.com/z/do-retrato-masculino-do-avatar-do-%C3%ADcone-do-perfil-pessoa-ocasional-58249506.jpg" />
+                <img src="https://thumbs.dreamstime.com/b/moderno-masculino-do-avatar-do-%C3%ADcone-do-perfil-do-homem-de-neg%C3%B3cio-69046013.jpg" />
               </div>
               <div>
-                <strong className="username">Icaro Monteiro</strong>
-                <p>há 10 min</p>
+                <strong className="username">João Miguel</strong>
+                <p>há 15 min</p>
               </div>
             </div>
             <p>
@@ -64,11 +64,11 @@ class App extends Component {
           <Posts>
             <div className="postTopo">
               <div>
-                <img src="https://thumbs.dreamstime.com/z/do-retrato-masculino-do-avatar-do-%C3%ADcone-do-perfil-pessoa-ocasional-58249506.jpg" />
+                <img src="https://comps.canstockphoto.com.br/perfil-mulher-silueta-pessoa-avatar-cliparte-vetor_csp29677506.jpg" />
               </div>
               <div>
-                <strong className="username">Icaro Monteiro</strong>
-                <p>há 10 min</p>
+                <strong className="username">Maria Francisca</strong>
+                <p>há 20 min</p>
               </div>
             </div>
             <p>
