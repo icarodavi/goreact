@@ -1,13 +1,15 @@
 const path = require('path');
+
 module.exports = {
-  devTool: 'source-map',
+  devtool: 'source-map',
   entry: path.join(__dirname, 'src', 'index.js'),
   output: {
     path: path.join(__dirname, 'public'),
     filename: 'bundle.js',
   },
   module: {
-    rules: [{
+    rules: [
+      {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
@@ -16,14 +18,15 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        use: [{
-            loader: 'style-loader'
+        use: [
+          {
+            loader: 'style-loader',
           },
           {
-            loader: 'css-loader'
+            loader: 'css-loader',
           },
           {
-            loader: 'sass-loader'
+            loader: 'sass-loader',
           },
         ],
       },
