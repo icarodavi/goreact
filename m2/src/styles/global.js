@@ -1,6 +1,4 @@
-import {
-  injectGlobal,
-} from 'styled-components';
+import { injectGlobal } from 'styled-components';
 
 injectGlobal`
   * {
@@ -9,9 +7,11 @@ injectGlobal`
       box-sizing: border-box;
       outline:0;
   }
+
   body {
       background: #9b65e5;
       text-rendering: optimizelegibility !important;
       -webkit-font-smoothing: antialiased !important;
+      font-family: Sans Serif;
   }
 `;
