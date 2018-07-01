@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import mjs from 'moment';
 import '../../styles/global';
 
 import logo from '../../assets/logo.png';
@@ -16,10 +17,11 @@ class Main extends Component {
   handleAddRepository = async (e) => {
     e.preventDefault();
     try {
-      const response = await api.get(`/repos/${this.state.repositoryInput}`);
+      const { data: repository } = await api.get(`/repos/${this.state.repositoryInput}`);
+      repository.lastCommit = mjs(repository.pushed_at).fromNow();
       this.setState({
         repositoryInput: '',
-        repositories: [...this.state.repositories, response.data],
+        repositories: [...this.state.repositories, repository],
       });
     } catch (error) {
       console.log(error);
