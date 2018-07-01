@@ -10,21 +10,27 @@ import api from '../../services/api';
 
 class Main extends Component {
   state = {
+    loading: false,
     repositoryInput: '',
     repositories: [],
+    repositoryError: false,
   };
 
   handleAddRepository = async (e) => {
     e.preventDefault();
+    this.setState({ loading: true });
     try {
       const { data: repository } = await api.get(`/repos/${this.state.repositoryInput}`);
       repository.lastCommit = mjs(repository.pushed_at).fromNow();
       this.setState({
         repositoryInput: '',
+        repositoryError: false,
         repositories: [...this.state.repositories, repository],
       });
     } catch (error) {
-      console.log(error);
+      this.setState({ repositoryError: true });
+    } finally {
+      this.setState({ loading: false });
     }
   };
 
@@ -32,14 +38,16 @@ class Main extends Component {
     return (
       <Container>
         <img src={logo} alt="" />
-        <Form onSubmit={this.handleAddRepository}>
+        <Form withError={this.state.repositoryError} onSubmit={this.handleAddRepository}>
           <input
             type="text"
             placeholder="usuario/repositorio"
             value={this.state.repositoryInput}
             onChange={e => this.setState({ repositoryInput: e.target.value })}
           />
-          <button type="submit">Ok</button>
+          <button type="submit">
+            {this.state.loading ? <i className="fa fa-spinner fa-pulse" /> : 'OK'}
+          </button>
         </Form>
         <CompareList repositories={this.state.repositories} />
       </Container>
