@@ -1,16 +1,23 @@
 import React, { Component } from 'react';
 import Head from './components/Head';
+import NavBar from './components/NavBar';
+
+import './styles/global';
 
 class App extends Component {
   state = {
     loading: false,
     repositories: [],
-    repositoryInput: ''
+    repositoryInput: '',
   };
+
   render() {
     return (
       <div className="App">
-        <Head />
+        <div className="wrapper">
+          <NavBar />
+          <Head />
+        </div>
       </div>
     );
   }
