@@ -2,13 +2,14 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
-import * as FavoriteActions from '../../store/actions/favorites';
+import { Creators as FavoriteActions } from '../../store/ducks/favorites';
 
 class Main extends React.Component {
   static propTypes = {
     addFavoriteRequest: PropTypes.func.isRequired,
     favorites: PropTypes.shape({
       loading: PropTypes.bool,
+      error: PropTypes.oneOfType([null, PropTypes.string]),
       data: PropTypes.arrayOf(
         PropTypes.shape({
           id: PropTypes.number,
@@ -40,6 +41,9 @@ class Main extends React.Component {
           />
           <button type="submit">Adicionar</button>
           {this.props.favorites.loading && <span>Carregando...</span>}
+          {!!this.props.favorites.error && (
+            <span style={{ color: '#f00' }}>{this.props.favorites.error}</span>
+          )}
         </form>
         <ul>
           {this.props.favorites.data.map(favorite => (
