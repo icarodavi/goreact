@@ -4,11 +4,15 @@ import './styles/global';
 import Sidebar from './components/sidebar';
 import Player from './components/player';
 
+import { Wrapper, Container } from './styles/components';
+
 const App = () => (
-  <React.Fragment>
-    <Sidebar />
+  <Wrapper>
+    <Container>
+      <Sidebar />
+    </Container>
     <Player />
-  </React.Fragment>
+  </Wrapper>
 );
 
 export default App;

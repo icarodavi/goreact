@@ -1,4 +1,5 @@
 import { injectGlobal } from 'styled-components';
+import 'rc-slider/assets/index.css';
 
 injectGlobal`
 * {
