@@ -1,48 +1,59 @@
 import React from 'react';
+// REDUX
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import PropTypes from 'prop-types';
+import { Creators as PlaylistsActions } from '../../store/ducks/playlists';
 
+// PROPTYPES
+
+// STYLES
 import {
   Container, Title, List, Playlist,
 } from './styles';
 
-const Browse = () => (
-  <Container>
-    <Title>Navegar</Title>
+class Browse extends React.Component {
+  static propTypes = {
+    getPlaylistsRequest: PropTypes.func,
+    playlists: PropTypes.shape({
+      data: PropTypes.arrayOf(
+        PropTypes.shape({
+          id: PropTypes.number,
+          title: PropTypes.string,
+          description: PropTypes.string,
+          thumbnail: PropTypes.string,
+        }),
+      ),
+    }),
+  };
 
-    <List>
-      <Playlist to="/playlists/1">
-        <img
-          src="https://99designs-blog.imgix.net/wp-content/uploads/2017/12/f09b9132584da6ba9ed3d99e5478f201.500x500x1.png?auto=format&q=60&fit=max&w=930"
-          alt="playlist"
-        />
-        <storng>Rock dos bons</storng>
-        <p>Relaxe enquanto você programa ouvindo apenas as melhores músicas de rock</p>
-      </Playlist>
-      <Playlist to="/playlists/1">
-        <img
-          src="https://99designs-blog.imgix.net/wp-content/uploads/2017/12/f09b9132584da6ba9ed3d99e5478f201.500x500x1.png?auto=format&q=60&fit=max&w=930"
-          alt="playlist"
-        />
-        <storng>Rock dos bons</storng>
-        <p>Relaxe enquanto você programa ouvindo apenas as melhores músicas de rock</p>
-      </Playlist>
-      <Playlist to="/playlists/1">
-        <img
-          src="https://99designs-blog.imgix.net/wp-content/uploads/2017/12/f09b9132584da6ba9ed3d99e5478f201.500x500x1.png?auto=format&q=60&fit=max&w=930"
-          alt="playlist"
-        />
-        <storng>Rock dos bons</storng>
-        <p>Relaxe enquanto você programa ouvindo apenas as melhores músicas de rock</p>
-      </Playlist>
-      <Playlist to="/playlists/1">
-        <img
-          src="https://99designs-blog.imgix.net/wp-content/uploads/2017/12/f09b9132584da6ba9ed3d99e5478f201.500x500x1.png?auto=format&q=60&fit=max&w=930"
-          alt="playlist"
-        />
-        <storng>Rock dos bons</storng>
-        <p>Relaxe enquanto você programa ouvindo apenas as melhores músicas de rock</p>
-      </Playlist>
-    </List>
-  </Container>
-);
+  componentDidMount() {
+    this.props.getPlaylistsRequest();
+  }
 
-export default Browse;
+  render() {
+    return (
+      <Container>
+        <Title>Navegar</Title>
+
+        <List>
+          {this.props.playlists.data.map(playlist => (
+            <Playlist key={playlist.id} to={`/playlists/${playlist.id}`}>
+              <img src={playlist.thumbnail} alt={playlist.title} />
+              <storng>{playlist.title}</storng>
+              <p>{playlist.description}</p>
+            </Playlist>
+          ))}
+        </List>
+      </Container>
+    );
+  }
+}
+const mapStateToProps = state => ({
+  playlists: state.playlists,
+});
+const mapDispatchToProps = dispatch => bindActionCreators(PlaylistsActions, dispatch);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Browse);

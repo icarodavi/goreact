@@ -1,8 +1,9 @@
 import React from 'react';
+import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 
 import './config/reactotron';
-
+import store from './store';
 import './styles/global';
 
 import Sidebar from './components/Sidebar';
@@ -13,20 +14,21 @@ import Routes from './routes';
 
 import { Wrapper, Container, Content } from './styles/components';
 
-console.tron.log('TExte');
 const App = () => (
-  <BrowserRouter>
-    <Wrapper>
-      <Container>
-        <Sidebar />
-        <Content>
-          <Header />
-          <Routes />
-        </Content>
-      </Container>
-      <Player />
-    </Wrapper>
-  </BrowserRouter>
+  <Provider store={store}>
+    <BrowserRouter>
+      <Wrapper>
+        <Container>
+          <Sidebar />
+          <Content>
+            <Header />
+            <Routes />
+          </Content>
+        </Container>
+        <Player />
+      </Wrapper>
+    </BrowserRouter>
+  </Provider>
 );
 
 export default App;
