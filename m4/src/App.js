@@ -1,18 +1,32 @@
 import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
+
+import './config/reactotron';
+
 import './styles/global';
 
-import Sidebar from './components/sidebar';
-import Player from './components/player';
+import Sidebar from './components/Sidebar';
+import Player from './components/Player';
+import Header from './components/Header';
 
-import { Wrapper, Container } from './styles/components';
+import Routes from './routes';
 
+import { Wrapper, Container, Content } from './styles/components';
+
+console.tron.log('TExte');
 const App = () => (
-  <Wrapper>
-    <Container>
-      <Sidebar />
-    </Container>
-    <Player />
-  </Wrapper>
+  <BrowserRouter>
+    <Wrapper>
+      <Container>
+        <Sidebar />
+        <Content>
+          <Header />
+          <Routes />
+        </Content>
+      </Container>
+      <Player />
+    </Wrapper>
+  </BrowserRouter>
 );
 
 export default App;
