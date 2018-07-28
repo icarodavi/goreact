@@ -52,7 +52,7 @@ class Playlist extends React.Component {
     const { id } = this.props.match.params;
     this.props.getPlaylistDetailsRequest(id);
   };
-
+  
   renderDetails = () => {
     const playlist = this.props.playlistDetails.data;
     let numberSong = 0;
@@ -87,17 +87,20 @@ class Playlist extends React.Component {
                 <td colSpan={5}>Nenhuma música cadastrada</td>
               </tr>
             ) : (
-              playlist.songs.map(song => (
-                <tr key={song.id}>
-                  <td>
-                    #{(numberSong += 1)} <img src={PlusIcon} alt="Adicionar a playlist" />
-                  </td>
-                  <td>{song.title}</td>
-                  <td>{song.artist}</td>
-                  <td>{song.album}</td>
-                  <td>3:23</td>
-                </tr>
-              ))
+              playlist.songs.map((song) => {
+                numberSong += 1;
+                return (
+                  <tr key={song.id}>
+                    <td>
+                      #{numberSong} <img src={PlusIcon} alt="Adicionar a playlist" />
+                    </td>
+                    <td>{song.title}</td>
+                    <td>{song.artist}</td>
+                    <td>{song.album}</td>
+                    <td>3:23</td>
+                  </tr>
+                );
+              })
             )}
           </tbody>
         </Songlist>

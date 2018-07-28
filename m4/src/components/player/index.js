@@ -1,5 +1,6 @@
 import React from 'react';
 import Slider from 'rc-slider';
+import Sound from 'react-sound';
 import {
   Container, Current, Volume, Controls, Progress, Time, ProgressSlider,
 } from './styles';
@@ -13,6 +14,7 @@ import RepeatIcon from '../../assets/images/repeat.svg';
 
 const Player = () => (
   <Container>
+    {/* <Sound /> */}
     <Current>
       <img
         src="https://99designs-blog.imgix.net/wp-content/uploads/2017/12/f09b9132584da6ba9ed3d99e5478f201.500x500x1.png?auto=format&q=60&fit=max&w=930"
