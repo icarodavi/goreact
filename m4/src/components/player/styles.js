@@ -11,6 +11,7 @@ export const Container = styled.div`
 `;
 
 export const Current = styled.div`
+  width: 220px;
   display: flex;
   align-items: center;
   img {

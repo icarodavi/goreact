@@ -7,8 +7,6 @@ import PropTypes from 'prop-types';
 import { Creators as PlaylistDetailsActions } from '../../store/ducks/playlistDetails';
 import { Creators as PlayerActions } from '../../store/ducks/player';
 
-// PROPTYPES
-
 import {
   Container,
   Header,
@@ -107,7 +105,7 @@ class Playlist extends React.Component {
                   <SongItem
                     key={song.id}
                     onClick={() => this.setState({ selectedSong: song.id })}
-                    onDoubleClick={() => this.props.loadSong(song)}
+                    onDoubleClick={() => this.props.loadSong(song, playlist.songs)}
                     selected={this.state.selectedSong === song.id}
                     playing={this.props.currentSong && this.props.currentSong.id === song.id}
                   >
